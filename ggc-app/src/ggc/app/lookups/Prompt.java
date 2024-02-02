@@ -1,32 +1,32 @@
 package ggc.app.lookups;
 
 /**
- * Prompts.
+ * Messages.
  */
-interface Prompt {
+interface Message {
 
   /** @return string prompting for product identifier */
-  static String productKey() {
+  static String requestProductKey() {
     return "Identificador do produto: ";
   }
 
   /** @return string prompting for a partner identifier. */
-  static String partnerKey() {
+  static String requestPartnerKey() {
     return "Identificador do parceiro: ";
   }
 
   /** @return string prompting for identifier */
-  static String transactionKey() {
+  static String requestTransactionKey() {
     return "Identificador da transacção: ";
   }
 
   /** @return string prompting for a price. */
-  static String priceLimit() {
+  static String requestPriceLimit() {
     return "Preço: ";
   }
 
   /** @return string prompting for a delay. */
-  static String delay() {
+  static String requestDelay() {
     return "Atraso: ";
   }
 

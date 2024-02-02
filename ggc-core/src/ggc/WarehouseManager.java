@@ -1,16 +1,26 @@
 package ggc;
+
 //FIXME import classes (cannot import from pt.tecnico or ggc.app)
 
-import ggc.exceptions.*;
-import java.io.*;
+import ggc.classes.Partner;
+import ggc.classes.transactions.Acquisition;
+
+import java.io.Serializable;
+import java.io.IOException;
+import java.io.FileNotFoundException;
+
+import ggc.exceptions.BadEntryException;
+import ggc.exceptions.ImportFileException;
+import ggc.exceptions.UnavailableFileException;
+import ggc.exceptions.MissingFileAssociationException;
 
 /** Façade for access. */
 public class WarehouseManager {
 
-  /** Name of file storing current store. */
+  /** Name of file storing current warehouse. */
   private String _filename = "";
 
-  /** The warehouse itself. */
+  /** The wharehouse itself. */
   private Warehouse _warehouse = new Warehouse();
 
   //FIXME define other attributes
@@ -41,7 +51,7 @@ public class WarehouseManager {
    * @@param filename
    * @@throws UnavailableFileException
    */
-  public void load(String filename) throws UnavailableFileException {
+  public void load(String filename) throws UnavailableFileException, ClassNotFoundException  {
     //FIXME implement serialization method
   }
 
@@ -51,30 +61,14 @@ public class WarehouseManager {
    */
   public void importFile(String textfile) throws ImportFileException {
     try {
-	    _warehouse.importFile(textfile);
+      _warehouse.importFile(textfile);
     } catch (IOException | BadEntryException /* FIXME maybe other exceptions */ e) {
-	    throw new ImportFileException(textfile);
+      throw new ImportFileException(textfile, e);
     }
   }
 
-  public void advanceDate(int days) throws NoSuchDateException{
-    _warehouse.advanceDate(days);
-  }
+  //public Partner getPartner(String id){
 
-  public int showDate(){
-    return _warehouse.showDate();
-  }
-
-  public void registerPartner(String id, String name, String adress) throws PartnerDuplicateKeyException{
-    _warehouse.registerPartner(id, name, adress);
-  }
-
-  public String getPartner(String id) throws PartnerUnknownKeyException{
-    return _warehouse.getPartner(id);
-  }
-
-  public String getPartners(){
-    return _warehouse.getPartners();
-  }
-
+    //return;}
+  
 }

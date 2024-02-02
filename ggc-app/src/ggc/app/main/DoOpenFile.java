@@ -23,6 +23,8 @@ class DoOpenFile extends Command<WarehouseManager> {
       //FIXME implement command
     } catch (UnavailableFileException ufe) {
       throw new FileOpenFailedException(ufe.getFilename());
+    } catch (ClassNotFoundException e) {
+      e.printStackTrace();
     }
     */
   }

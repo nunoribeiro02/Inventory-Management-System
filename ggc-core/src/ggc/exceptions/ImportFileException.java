@@ -23,10 +23,11 @@ public class ImportFileException extends Exception {
   }
 
   /**
+   * @param importFile
    * @param cause
    */
-  public ImportFileException(Exception cause) {
-    super(cause);
+  public ImportFileException(String importFile, Exception cause) {
+    super("Erro em ficheiro de import: " + importFile, cause);
   }
 
 }

@@ -13,12 +13,11 @@ class DoSaveFile extends Command<WarehouseManager> {
   /** @param receiver */
   DoSaveFile(WarehouseManager receiver) {
     super(Label.SAVE, receiver);
-    //FIXME maybe add command fields
   }
 
   @Override
   public final void execute() throws CommandException {
-    //FIXME implement command
+    //FIXME implement command and create a local Form
   }
 
 }

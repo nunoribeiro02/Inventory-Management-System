@@ -5,6 +5,13 @@ package ggc.app.products;
  */
 interface Message {
 
-  // EMPTY
+  /** @return string prompting for product identifier */
+  static String requestProductKey() {
+    return "Identificador do produto: ";
+  }
 
+  /** @return string prompting for partner identifier */
+  static String requestPartnerKey() {
+    return "Identificador do parceiro: ";
+  }
 }
