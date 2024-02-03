@@ -3,7 +3,8 @@ package ggc.app.partners;
 import pt.tecnico.uilib.menus.Command;
 import pt.tecnico.uilib.menus.CommandException;
 import ggc.WarehouseManager;
-//FIXME import classes
+import ggc.app.exceptions.UnknownPartnerKeyException;
+import ggc.exceptions.NoSuchPartnerException;
 
 /**
  * Show partner.
@@ -12,12 +13,17 @@ class DoShowPartner extends Command<WarehouseManager> {
 
   DoShowPartner(WarehouseManager receiver) {
     super(Label.SHOW_PARTNER, receiver);
-    //FIXME add command fields
+    addStringField("id", Prompt.partnerKey());
   }
 
   @Override
-  public void execute() throws CommandException {
-    //FIXME implement command
+  public void execute() throws CommandException, UnknownPartnerKeyException {
+    try{
+      String id = stringField("id");
+      _receiver.showPartner(id);
+    } catch (NoSuchPartnerException e){
+      throw new UnknownPartnerKeyException(e.getId());
+    }
   }
 
 }
