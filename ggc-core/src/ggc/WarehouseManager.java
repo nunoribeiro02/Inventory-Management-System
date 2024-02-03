@@ -13,6 +13,7 @@ import ggc.exceptions.BadEntryException;
 import ggc.exceptions.ImportFileException;
 import ggc.exceptions.UnavailableFileException;
 import ggc.exceptions.MissingFileAssociationException;
+import ggc.exceptions.NoSuchDateException;
 
 /** Façade for access. */
 public class WarehouseManager {
@@ -73,5 +74,9 @@ public class WarehouseManager {
   
   public int showDate(){
     return _warehouse.getCurrentTime();
+  }
+
+  public void advanceDate(int days) throws NoSuchDateException{
+    _warehouse.advanceDate(days);
   }
 }

@@ -5,6 +5,7 @@ package ggc;
 import java.io.Serializable;
 import java.io.IOException;
 import ggc.exceptions.BadEntryException;
+import ggc.exceptions.NoSuchDateException;
 
 /**
  * Class Warehouse implements a warehouse.
@@ -22,9 +23,21 @@ public class Warehouse implements Serializable {
     _currentTime = 0;
   }
 
-  // FIXME define methods
+  // Getters and Setters
   public int getCurrentTime(){
     return _currentTime;
+  }
+
+  public void setCurrentTime(int currentTime){
+    _currentTime = currentTime;
+  }
+
+  // Methods
+  public void advanceDate(int days) throws NoSuchDateException{
+    if (days < 0)
+      throw new NoSuchDateException(days);
+      
+    setCurrentTime(_currentTime + days);
   }
 
   /**
