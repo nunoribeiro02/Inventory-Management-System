@@ -14,9 +14,18 @@ public class Warehouse implements Serializable {
   /** Serial number for serialization. */
   private static final long serialVersionUID = 202109192006L;
 
-  // FIXME define attributes
+  // Attributes
+  private int _currentTime;
+
   // FIXME define contructor(s)
+  public Warehouse(){
+    _currentTime = 0;
+  }
+
   // FIXME define methods
+  public int getCurrentTime(){
+    return _currentTime;
+  }
 
   /**
    * @param txtfile filename to be loaded.

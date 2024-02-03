@@ -71,4 +71,7 @@ public class WarehouseManager {
 
     //return;}
   
+  public int showDate(){
+    return _warehouse.getCurrentTime();
+  }
 }

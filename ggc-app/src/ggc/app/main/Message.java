@@ -36,5 +36,4 @@ interface Message {
   static String requestDaysToAdvance() {
     return "Número de dias a avançar: ";
   }
-
 }
