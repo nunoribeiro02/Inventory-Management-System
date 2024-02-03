@@ -14,6 +14,8 @@ import ggc.exceptions.ImportFileException;
 import ggc.exceptions.UnavailableFileException;
 import ggc.exceptions.MissingFileAssociationException;
 import ggc.exceptions.NoSuchDateException;
+import ggc.exceptions.NoSuchPartnerException;
+import ggc.classes.*;
 
 /** Façade for access. */
 public class WarehouseManager {
@@ -79,4 +81,9 @@ public class WarehouseManager {
   public void advanceDate(int days) throws NoSuchDateException{
     _warehouse.advanceDate(days);
   }
+
+  public Partner showPartner(String id) throws NoSuchPartnerException{
+    return _warehouse.showPartner(id);
+  }
+
 }

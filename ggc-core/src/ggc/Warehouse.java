@@ -4,8 +4,12 @@ package ggc;
 
 import java.io.Serializable;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import ggc.exceptions.BadEntryException;
 import ggc.exceptions.NoSuchDateException;
+import ggc.exceptions.NoSuchPartnerException;
+import ggc.classes.*;
 
 /**
  * Class Warehouse implements a warehouse.
@@ -17,6 +21,7 @@ public class Warehouse implements Serializable {
 
   // Attributes
   private int _currentTime;
+  private Map<String, Partner> _partners = new HashMap<String, Partner>(); 
 
   // FIXME define contructor(s)
   public Warehouse(){
@@ -36,8 +41,16 @@ public class Warehouse implements Serializable {
   public void advanceDate(int days) throws NoSuchDateException{
     if (days < 0)
       throw new NoSuchDateException(days);
-      
+
     setCurrentTime(_currentTime + days);
+  }
+
+  public Partner showPartner(String id) throws NoSuchPartnerException{
+    if (!_partners.containsKey(id)){
+      throw new NoSuchPartnerException(id);
+    }
+    
+    return _partners.get(id);
   }
 
   /**
