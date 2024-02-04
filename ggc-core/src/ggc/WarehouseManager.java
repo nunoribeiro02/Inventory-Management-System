@@ -15,6 +15,7 @@ import ggc.exceptions.UnavailableFileException;
 import ggc.exceptions.MissingFileAssociationException;
 import ggc.exceptions.NoSuchDateException;
 import ggc.exceptions.NoSuchPartnerException;
+import ggc.exceptions.PartnerAlreadyExistsException;
 import ggc.classes.*;
 
 /** Façade for access. */
@@ -69,10 +70,6 @@ public class WarehouseManager {
       throw new ImportFileException(textfile, e);
     }
   }
-
-  //public Partner getPartner(String id){
-
-    //return;}
   
   public int showDate(){
     return _warehouse.getCurrentTime();
@@ -80,6 +77,10 @@ public class WarehouseManager {
 
   public void advanceDate(int days) throws NoSuchDateException{
     _warehouse.advanceDate(days);
+  }
+
+  public void registerPartner(String partnerKey, String name, String address) throws PartnerAlreadyExistsException{
+    _warehouse.registerPartner(partnerKey, name, address);
   }
 
   public Partner showPartner(String id) throws NoSuchPartnerException{

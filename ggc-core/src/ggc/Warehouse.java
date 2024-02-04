@@ -3,13 +3,16 @@ package ggc;
 // FIXME import classes (cannot import from pt.tecnico or ggc.app)
 
 import java.io.Serializable;
+import java.security.Permissions;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import ggc.exceptions.BadEntryException;
 import ggc.exceptions.NoSuchDateException;
 import ggc.exceptions.NoSuchPartnerException;
+import ggc.exceptions.PartnerAlreadyExistsException;
 import ggc.classes.*;
+import ggc.classes.Partner;
 
 /**
  * Class Warehouse implements a warehouse.
@@ -45,12 +48,21 @@ public class Warehouse implements Serializable {
     setCurrentTime(_currentTime + days);
   }
 
-  public Partner showPartner(String id) throws NoSuchPartnerException{
-    if (!_partners.containsKey(id)){
-      throw new NoSuchPartnerException(id);
+  public void registerPartner(String partnerKey, String name, String address) throws PartnerAlreadyExistsException{
+    if (_partners.containsKey(partnerKey)){
+      throw new PartnerAlreadyExistsException(partnerKey);
+    }
+
+    Partner p = new Partner(partnerKey, name, address);
+    _partners.put(partnerKey, p);
+  }
+
+  public Partner showPartner(String partnerKey) throws NoSuchPartnerException{
+    if (!_partners.containsKey(partnerKey)){
+      throw new NoSuchPartnerException(partnerKey);
     }
     
-    return _partners.get(id);
+    return _partners.get(partnerKey);
   }
 
   /**
