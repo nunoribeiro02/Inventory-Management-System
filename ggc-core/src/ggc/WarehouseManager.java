@@ -87,4 +87,8 @@ public class WarehouseManager {
     return _warehouse.showPartner(id);
   }
 
+  public void showAllPartners() {
+    _warehouse.showAllPartners();
+  }
+
 }

@@ -65,6 +65,16 @@ public class Warehouse implements Serializable {
     return _partners.get(partnerKey);
   }
 
+  public void showAllPartners() {
+    for (String key: _partners.keySet()){
+      try {
+        showPartner(key);
+      }
+      catch (NoSuchPartnerException e){
+      }
+    }
+  }
+
   /**
    * @param txtfile filename to be loaded.
    * @throws IOException
