@@ -1,5 +1,7 @@
 package ggc.app.partners;
 
+import ggc.classes.Partner;
+
 /** Messages for partner menu interactions. */
 interface Message {
 
@@ -22,5 +24,17 @@ interface Message {
   static String requestProductKey() {
     return "Identificador do produto: ";
   }
+
+  /**
+   * @param p partner to be shown
+   * @return string describing the partner's attributes.
+   */
+  static String showPartner(Partner p) {
+    return "Partner Key: " + p.getPartnerKey() + "Name: " + p.getName() + "\n" +
+      "Status: " + p.getStatus() +  "Points: " + Math.round(p.getPoints()) + "\n" +
+      "Value Acquisitions: " + Math.round(p.getValueAcquisitions()) + "\n"+ 
+      "Value Sales: " + Math.round(p.getValueSales()) + "Value Paid Sales: " + Math.round(p.getValuePaidSales());
+  }
+
 
 }

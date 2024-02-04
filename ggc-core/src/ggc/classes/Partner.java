@@ -3,6 +3,7 @@ package ggc.classes;
 public class Partner {
     private String _partnerKey;
     private String _name;
+    private String _status;
     private String _address;
     private int _points;
     private double _valueAcquisitions;
@@ -15,6 +16,7 @@ public class Partner {
         _partnerKey = partnerKey;
         _name = name;
         _address = address;
+        _status = "Normal";
         _points = 0;
         _valueAcquisitions = 0;
         _valueSales = 0;
@@ -32,6 +34,10 @@ public class Partner {
 
     public String getAddress(){
         return _address;
+    }
+
+    public String getStatus(){
+        return _status;
     }
 
     public int getPoints(){
