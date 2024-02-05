@@ -1,11 +1,11 @@
 package ggc.classes;
 
-abstract class Product{
+public class Product{
     
     private double _maxPrice;
     private String id;
 
-    public void Product(String id){
+    public Product(String id){
         this.id = id;
         this._maxPrice = 0;
     }
