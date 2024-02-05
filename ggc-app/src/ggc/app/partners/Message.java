@@ -1,5 +1,7 @@
 package ggc.app.partners;
 
+import java.util.List;
+
 import ggc.classes.Partner;
 
 /** Messages for partner menu interactions. */
@@ -33,8 +35,14 @@ interface Message {
     return "-> Partner Key: " + p.getPartnerKey() + ", Name: " + p.getName() + "\n" +
       "Status: " + p.getStatus() +  ", Points: " + Math.round(p.getPoints()) + "\n" +
       "Value Acquisitions: " + Math.round(p.getValueAcquisitions()) + "\n"+ 
-      "Value Sales: " + Math.round(p.getValueSales()) + ", Value Paid Sales: " + Math.round(p.getValuePaidSales());
+      "Value Sales: " + Math.round(p.getValueSales()) + ", Value Paid Sales: " + Math.round(p.getValuePaidSales()) + "\n";
   }
 
-
+  static String showAllPartners(List<Partner> pList) {
+    StringBuilder messageBuilder = new StringBuilder();
+    pList.forEach(p -> messageBuilder.append(showPartner(p)));
+    String message = messageBuilder.toString();
+    
+    return message;
+  }
 }

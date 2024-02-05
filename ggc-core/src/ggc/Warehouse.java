@@ -5,7 +5,9 @@ package ggc;
 import java.io.Serializable;
 import java.security.Permissions;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import ggc.exceptions.BadEntryException;
 import ggc.exceptions.NoSuchDateException;
@@ -65,14 +67,17 @@ public class Warehouse implements Serializable {
     return _partners.get(partnerKey);
   }
 
-  public void showAllPartners() {
+  public List<Partner> showAllPartners() {
+    List<Partner> partnersShow = new ArrayList<Partner>();
     for (String key: _partners.keySet()){
       try {
-        showPartner(key);
+        partnersShow.add(showPartner(key));
       }
       catch (NoSuchPartnerException e){
       }
     }
+
+    return partnersShow;
   }
 
   /**

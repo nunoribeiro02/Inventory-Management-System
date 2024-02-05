@@ -17,6 +17,7 @@ import ggc.exceptions.NoSuchDateException;
 import ggc.exceptions.NoSuchPartnerException;
 import ggc.exceptions.PartnerAlreadyExistsException;
 import ggc.classes.*;
+import java.util.List;
 
 /** Façade for access. */
 public class WarehouseManager {
@@ -87,8 +88,8 @@ public class WarehouseManager {
     return _warehouse.showPartner(id);
   }
 
-  public void showAllPartners() {
-    _warehouse.showAllPartners();
+  public List<Partner> showAllPartners() {
+    return _warehouse.showAllPartners();
   }
 
 }
