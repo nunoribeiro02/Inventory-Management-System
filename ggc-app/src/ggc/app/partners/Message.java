@@ -32,10 +32,10 @@ interface Message {
    * @return string describing the partner's attributes.
    */
   static String showPartner(Partner p) {
-    return "-> Partner Key: " + p.getPartnerKey() + ", Name: " + p.getName() + "\n" +
-      "Status: " + p.getStatus() +  ", Points: " + Math.round(p.getPoints()) + "\n" +
-      "Value Acquisitions: " + Math.round(p.getValueAcquisitions()) + "\n"+ 
-      "Value Sales: " + Math.round(p.getValueSales()) + ", Value Paid Sales: " + Math.round(p.getValuePaidSales()) + "\n";
+    return " " + p.getPartnerKey() + "| " + p.getName() +
+      "|" + p.getStatus() +  "| " + Math.round(p.getPoints()) + 
+      "| " + Math.round(p.getValueAcquisitions()) +
+      "| " + Math.round(p.getValueSales()) + "| " + Math.round(p.getValuePaidSales());
   }
 
   static String showAllPartners(List<Partner> pList) {
