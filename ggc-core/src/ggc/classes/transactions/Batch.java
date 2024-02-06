@@ -1,27 +1,30 @@
 package ggc.classes.transactions;
 
-public class Batch {
+import ggc.classes.Partner;
+import ggc.classes.Product;
+
+public class Batch{
     
-    private String _partnerKey;
-    private String _productId;
+    private Partner _partner;
+    private Product _product;
     private double _price;
     private int _quantity;
 
     // Constructor
-    public Batch(String partnerKey, String productId, double price, int quantity){
-        _partnerKey = partnerKey;
-        _productId = productId;
+    public Batch(Partner partner, Product product, double price, int quantity) {
+        _partner = partner;
+        _product = product;
         _price = price;
         _quantity = quantity;
     }
     
     // Getters and Setters
-    public String getPartnerKey(){
-        return _partnerKey;
+    public Partner getPartner(){
+        return _partner;
     }
 
-    public String getProductId(){
-        return _productId;
+    public Product getProduct(){
+        return _product;
     }
 
     public double getPrice(){
@@ -32,25 +35,24 @@ public class Batch {
         return _quantity;
     }
 
-    public void setPartnerKey(String partnerKey){
-        this._partnerKey = partnerKey;
+    public void setPartner(Partner partner){
+        _partner = partner;
     }
 
-    public void setProductId(String productId){
-        this._productId = productId;
+    public void setProduct(Product product){
+        _product = product;
     }
 
     public void setPrice(double price){
-        this._price = price;
+        _price = price;
     }
 
     public void setQuantity(int quantity){
-        this._quantity = quantity;
+        _quantity = quantity;
     }    
 
     @Override
     public String toString() {
-        return  _partnerKey + "| " + _productId + "| " + _price + "| " + _quantity;
+        return  _product.getId() + "|" + _partner.getPartnerKey() + "|" + _price + "|" + _quantity;
     }
-
 }
