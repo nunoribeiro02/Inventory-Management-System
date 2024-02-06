@@ -84,10 +84,22 @@ public class Warehouse implements Serializable {
     return partnersShow;
   }
 
+  public List<Batch> showBatchesByPartner(String key) throws NoSuchPartnerException{
+    if (!_partners.containsKey(key)){
+      throw new NoSuchPartnerException(key);
+    }
+
+    List<Batch> batchesList = _batches.values().stream().toList();
+    batchesList.removeIf(b -> b.getQuantity() == 0);
+    batchesList.removeIf(b -> b.getPartner().getPartnerKey() != key);
+    
+    return batchesList;
+  }
+
   public List<Batch> showAllBatches() {
     List<Batch> batchesList = _batches.values().stream().toList();
     batchesList.removeIf(b -> b.getQuantity() == 0);
-    
+
     return batchesList;
   }
 
