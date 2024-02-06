@@ -3,11 +3,12 @@ package ggc.classes;
 public class Product{
     
     private double _maxPrice;
-    private String id;
+    private String _id;
+    private int _totalStock;
 
     public Product(String id){
-        this.id = id;
-        this._maxPrice = 0;
+        _id = id;
+        _maxPrice = 0;
     }
 
     // Getters and Setters
@@ -16,19 +17,30 @@ public class Product{
     }
 
     public String getId(){
-        return id;
+        return _id;
+    }
+
+    public int getTotalStock(){
+        return _totalStock;
     }
 
     public void setMaxPrice(double maxPrice){
-        this._maxPrice = maxPrice;
+        _maxPrice = maxPrice;
     }
 
     public void setId(String id){
-        this.id = id;
+        _id = id;
     }
 
+    public void setTotalStock(int totalStock){
+        _totalStock = totalStock;
+    }
+
+    /** 
+     * @return String
+     */
     @Override
-    public String toString() {
-        return "Product ID: " + id + "| Max Price: " + _maxPrice;
+    public String toString(){
+        return _id + "|" + Math.round(_maxPrice) + "|" + _totalStock;
     }
 }
