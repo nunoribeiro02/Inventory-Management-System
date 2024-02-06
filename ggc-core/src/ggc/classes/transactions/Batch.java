@@ -1,9 +1,11 @@
 package ggc.classes.transactions;
 
+import java.text.Collator;
+
 import ggc.classes.Partner;
 import ggc.classes.Product;
 
-public class Batch{
+public class Batch implements Comparable<Batch>{
     
     private Partner _partner;
     private Product _product;
@@ -53,6 +55,26 @@ public class Batch{
 
     @Override
     public String toString() {
-        return  _product.getId() + "|" + _partner.getPartnerKey() + "|" + _price + "|" + _quantity;
+        return  _product.getProductId() + "|" + _partner.getPartnerKey() + "|" + _price + "|" + _quantity + "\n";
+    }
+
+    @Override
+    public int compareTo(Batch comparedBatch) {
+        Collator myCollator = Collator.getInstance();
+        String comparedProduct = comparedBatch.getProduct().getProductId();
+        String comparedPartner = comparedBatch.getPartner().getPartnerKey();
+        double comparedPrice = comparedBatch.getPrice();
+        int comparedQuantity = comparedBatch.getQuantity();
+
+        if (comparedProduct == _product.getProductId()){
+            if (comparedPartner == _partner.getPartnerKey()){
+                if (comparedPrice == _price){
+                    return _quantity - comparedQuantity;
+                }
+                return Double.compare(_price, comparedPrice);
+            }
+            return myCollator.compare(_partner.getPartnerKey(), comparedPartner);
+        }
+        return myCollator.compare(_product.getProductId(), comparedProduct);
     }
 }

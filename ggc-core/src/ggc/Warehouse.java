@@ -13,8 +13,9 @@ import ggc.exceptions.BadEntryException;
 import ggc.exceptions.NoSuchDateException;
 import ggc.exceptions.NoSuchPartnerException;
 import ggc.exceptions.PartnerAlreadyExistsException;
-import ggc.classes.*;
 import ggc.classes.Partner;
+import ggc.classes.Product;
+import ggc.classes.transactions.Batch;
 
 /**
  * Class Warehouse implements a warehouse.
@@ -27,10 +28,13 @@ public class Warehouse implements Serializable {
   // Attributes
   private int _currentTime;
   private Map<String, Partner> _partners = new HashMap<String, Partner>(); 
+  private Map<String, Product> _product = new HashMap<String, Product>(); 
+  private Map<String, Batch> _batches = new HashMap<String, Batch>(); 
 
   // FIXME define contructor(s)
   public Warehouse(){
     _currentTime = 0;
+
   }
 
   // Getters and Setters
@@ -80,6 +84,14 @@ public class Warehouse implements Serializable {
     return partnersShow;
   }
 
+  public List<Batch> showAllBatches() {
+    List<Batch> batchesList = _batches.values().stream().toList();
+    batchesList.removeIf(b -> b.getQuantity() == 0);
+    
+    return batchesList;
+  }
+
+  
   /**
    * @param txtfile filename to be loaded.
    * @throws IOException

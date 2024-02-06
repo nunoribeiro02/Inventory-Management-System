@@ -4,6 +4,7 @@ package ggc;
 
 import ggc.classes.Partner;
 import ggc.classes.transactions.Acquisition;
+import ggc.classes.transactions.Batch;
 
 import java.io.Serializable;
 import java.io.IOException;
@@ -16,7 +17,8 @@ import ggc.exceptions.MissingFileAssociationException;
 import ggc.exceptions.NoSuchDateException;
 import ggc.exceptions.NoSuchPartnerException;
 import ggc.exceptions.PartnerAlreadyExistsException;
-import ggc.classes.*;
+import ggc.classes.Product;
+import ggc.classes.Partner;
 import java.util.List;
 
 /** Façade for access. */
@@ -92,4 +94,7 @@ public class WarehouseManager {
     return _warehouse.showAllPartners();
   }
 
+  public List<Batch> showAllBatches() {
+    return _warehouse.showAllBatches();
+  }
 }
