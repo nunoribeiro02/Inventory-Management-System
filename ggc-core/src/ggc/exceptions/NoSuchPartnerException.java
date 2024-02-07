@@ -14,12 +14,12 @@ public class NoSuchPartnerException extends Exception {
 	/**
 	 * @param filename 
 	 */
-	public NoSuchPartnerException(String id) {
-		_key = id;
+	public NoSuchPartnerException(String key) {
+		_key = key;
 	}
 	
 	/**
-	 * @return the id
+	 * @return the key
 	 */
 	public String getPartnerKey() {
 		return _key;
