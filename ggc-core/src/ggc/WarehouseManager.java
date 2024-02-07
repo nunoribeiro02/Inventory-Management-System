@@ -16,6 +16,7 @@ import ggc.exceptions.UnavailableFileException;
 import ggc.exceptions.MissingFileAssociationException;
 import ggc.exceptions.NoSuchDateException;
 import ggc.exceptions.NoSuchPartnerException;
+import ggc.exceptions.NoSuchProductException;
 import ggc.exceptions.PartnerAlreadyExistsException;
 import ggc.classes.Product;
 import ggc.classes.Partner;
@@ -97,6 +98,10 @@ public class WarehouseManager {
   
   public List<Batch> showBatchesByPartner(String key) throws NoSuchPartnerException {
     return _warehouse.showBatchesByPartner(key);
+  }
+
+  public List<Batch> showBatchesByProduct(String id) throws NoSuchProductException {
+    return _warehouse.showBatchesByProduct(id);
   }
 
   public List<Batch> showAllBatches() {

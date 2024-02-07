@@ -12,6 +12,7 @@ import java.util.Map;
 import ggc.exceptions.BadEntryException;
 import ggc.exceptions.NoSuchDateException;
 import ggc.exceptions.NoSuchPartnerException;
+import ggc.exceptions.NoSuchProductException;
 import ggc.exceptions.PartnerAlreadyExistsException;
 import ggc.classes.Partner;
 import ggc.classes.Product;
@@ -92,6 +93,18 @@ public class Warehouse implements Serializable {
     List<Batch> batchesList = _batches.values().stream().toList();
     batchesList.removeIf(b -> b.getQuantity() == 0);
     batchesList.removeIf(b -> b.getPartner().getPartnerKey() != key);
+    
+    return batchesList;
+  }
+
+  public List<Batch> showBatchesByProduct(String id) throws NoSuchProductException {
+    if (!_batches.containsKey(id)){
+      throw new NoSuchProductException(id);
+    }
+
+    List<Batch> batchesList = _batches.values().stream().toList();
+    batchesList.removeIf(b -> b.getQuantity() == 0);
+    batchesList.removeIf(b -> b.getProduct().getProductId() != id);
     
     return batchesList;
   }
