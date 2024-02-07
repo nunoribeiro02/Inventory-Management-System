@@ -16,7 +16,7 @@ public class Product{
         return _maxPrice;
     }
 
-    public String getId(){
+    public String getProductId(){
         return _id;
     }
 
@@ -28,7 +28,7 @@ public class Product{
         _maxPrice = maxPrice;
     }
 
-    public void setId(String id){
+    public void setProductId(String id){
         _id = id;
     }
 
