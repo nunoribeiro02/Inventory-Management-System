@@ -9,6 +9,13 @@ public abstract class Transaction {
     private String _productId;
     private int _quantity;
 
+    //Constructor
+    public Transaction(String partnerKey, String productId, int quantity){
+        _partnerKey = partnerKey;
+        _productId = productId;
+        _quantity = quantity;
+    }
+
     //Getters and Setters
     public int getId(){
         return _id;
