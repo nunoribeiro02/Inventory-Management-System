@@ -95,7 +95,11 @@ public class WarehouseManager {
     return _warehouse.showAllPartners();
   }
 
-  
+  public String showAllProducts() {
+    return _warehouse.showAllProducts();
+  }
+
+
   public List<Batch> showBatchesByPartner(String key) throws NoSuchPartnerException {
     return _warehouse.showBatchesByPartner(key);
   }

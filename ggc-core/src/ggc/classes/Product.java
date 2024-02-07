@@ -9,6 +9,8 @@ public class Product{
     public Product(String id){
         _id = id;
         _maxPrice = 0;
+        _totalStock = 0;
+
     }
 
     // Getters and Setters

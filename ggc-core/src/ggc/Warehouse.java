@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+
 import ggc.exceptions.BadEntryException;
 import ggc.exceptions.NoSuchDateException;
 import ggc.exceptions.NoSuchPartnerException;
@@ -29,7 +31,7 @@ public class Warehouse implements Serializable {
   // Attributes
   private int _currentTime;
   private Map<String, Partner> _partners = new HashMap<String, Partner>(); 
-  private Map<String, Product> _product = new HashMap<String, Product>(); 
+  private Map<String, Product> _products = new HashMap<String, Product>(); 
   private Map<String, Batch> _batches = new HashMap<String, Batch>(); 
 
   // FIXME define contructor(s)
@@ -83,6 +85,15 @@ public class Warehouse implements Serializable {
     }
 
     return partnersShow;
+  }
+
+  public String showAllProducts() {
+    List<Product> productList = _products.values().stream().toList();
+    String producString = productList.stream().map(Object::toString).collect(Collectors.joining(", "));
+
+    String producStringFinal = String.join("\n", producString);
+
+    return producStringFinal;
   }
 
   public List<Batch> showBatchesByPartner(String key) throws NoSuchPartnerException{
