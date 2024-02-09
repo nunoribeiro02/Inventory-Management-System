@@ -1,7 +1,5 @@
 package ggc.classes.transactions;
 
-import java.sql.Date;
-
 public abstract class Transaction {
 
     private int _id;
@@ -48,6 +46,4 @@ public abstract class Transaction {
     public void setQuantity(int quantity){
         _quantity = quantity;
     }
-
-    
 }
