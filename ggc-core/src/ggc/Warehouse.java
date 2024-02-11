@@ -30,6 +30,7 @@ public class Warehouse implements Serializable {
 
   // Attributes
   private int _currentTime;
+  private int _balance;
   private Map<String, Partner> _partners = new HashMap<String, Partner>(); 
   private Map<String, Product> _products = new HashMap<String, Product>(); 
   private Map<String, Batch> _batches = new HashMap<String, Batch>(); 
@@ -37,7 +38,7 @@ public class Warehouse implements Serializable {
   // FIXME define contructor(s)
   public Warehouse(){
     _currentTime = 0;
-
+    _balance = 0;
   }
 
   // Getters and Setters
@@ -47,6 +48,14 @@ public class Warehouse implements Serializable {
 
   public void setCurrentTime(int currentTime){
     _currentTime = currentTime;
+  }
+
+  public int getBalance(){
+    return _balance;
+  }
+
+  public void setBalance(int balance){
+    _balance = balance;
   }
 
   // Methods

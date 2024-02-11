@@ -79,6 +79,11 @@ public class WarehouseManager {
     return _warehouse.getCurrentTime();
   }
 
+  public int showBalance(){
+    return _warehouse.getBalance();
+  }
+
+
   public void advanceDate(int days) throws NoSuchDateException{
     _warehouse.advanceDate(days);
   }
