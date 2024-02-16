@@ -12,5 +12,5 @@ public class InvalidDateException extends CommandException {
   public InvalidDateException(int date) {
     super(Message.invalidDate(date));
   }
-
+  
 }

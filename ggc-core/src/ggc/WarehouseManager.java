@@ -12,6 +12,7 @@ import java.io.FileNotFoundException;
 
 import ggc.exceptions.BadEntryException;
 import ggc.exceptions.ImportFileException;
+import ggc.exceptions.InvalidAmountException;
 import ggc.exceptions.UnavailableFileException;
 import ggc.exceptions.MissingFileAssociationException;
 import ggc.exceptions.NoSuchDateException;
@@ -115,5 +116,11 @@ public class WarehouseManager {
 
   public List<Batch> showAllBatches() {
     return _warehouse.showAllBatches();
+  }
+
+  public void registerSaleTransactionString(String partnerKey, String productId, int deadline, int amount) throws NoSuchPartnerException, NoSuchProductException,
+            NoSuchDateException, InvalidAmountException
+  {
+    _warehouse.registerSaleTransaction(partnerKey, productId, deadline, amount);
   }
 }

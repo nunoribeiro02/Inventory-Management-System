@@ -16,9 +16,13 @@ import ggc.exceptions.NoSuchDateException;
 import ggc.exceptions.NoSuchPartnerException;
 import ggc.exceptions.NoSuchProductException;
 import ggc.exceptions.PartnerAlreadyExistsException;
+import ggc.exceptions.InvalidAmountException;
 import ggc.classes.Partner;
 import ggc.classes.Product;
 import ggc.classes.transactions.Batch;
+import ggc.classes.transactions.Sale;
+import ggc.classes.transactions.Transaction;
+
 
 /**
  * Class Warehouse implements a warehouse.
@@ -31,14 +35,17 @@ public class Warehouse implements Serializable {
   // Attributes
   private int _currentTime;
   private int _balance;
+  private int _transactionCounter;
   private Map<String, Partner> _partners = new HashMap<String, Partner>(); 
   private Map<String, Product> _products = new HashMap<String, Product>(); 
   private Map<String, Batch> _batches = new HashMap<String, Batch>(); 
+  private Map<Integer, Transaction> _transactions = new HashMap<Integer, Transaction>(); 
 
   // FIXME define contructor(s)
   public Warehouse(){
     _currentTime = 0;
     _balance = 0;
+    _transactionCounter = 0;
   }
 
   // Getters and Setters
@@ -146,4 +153,29 @@ public class Warehouse implements Serializable {
     //FIXME implement method
   }
 
+  public void registerSaleTransaction(String partnerKey, String productId, int deadline, int amount) throws NoSuchPartnerException, NoSuchProductException,
+            NoSuchDateException, InvalidAmountException
+  {
+    if (!_partners.containsKey(partnerKey)){
+      throw new NoSuchPartnerException(partnerKey);
+    }
+    if (!_products.containsKey(productId)){
+      throw new NoSuchProductException(productId);
+    }
+    if (deadline < getCurrentTime()){
+      throw new NoSuchDateException(deadline);
+
+    }
+
+    Product prod = _products.get(productId);
+    int stock = prod.getTotalStock();
+    if (amount < 0 || amount > stock){
+      throw new InvalidAmountException(productId, amount, stock);
+    }
+
+    Partner p = _partners.get(partnerKey);
+    Sale s = new Sale(_transactionCounter, partnerKey, productId, amount, deadline)
+    _transactions.put(_transactionCounter, s);
+    _transactionCounter++;
+  }
 }
