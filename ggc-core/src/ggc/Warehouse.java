@@ -174,7 +174,7 @@ public class Warehouse implements Serializable {
     }
 
     Partner p = _partners.get(partnerKey);
-    Sale s = new Sale(_transactionCounter, partnerKey, productId, amount, deadline)
+    Sale s = new Sale(_transactionCounter, partnerKey, productId, amount, deadline);
     _transactions.put(_transactionCounter, s);
     _transactionCounter++;
   }

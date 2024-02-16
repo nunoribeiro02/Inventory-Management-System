@@ -6,7 +6,7 @@ package ggc.app.transactions;
 interface Message {
 
  /** @return string prompting for product identifier */
-  static String requestProductKey() {
+  static String requestProductId() {
     return "Identificador do produto: ";
   }
 
