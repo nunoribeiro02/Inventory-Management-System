@@ -4,7 +4,7 @@ import ggc.classes.Date;
 import ggc.classes.Partner;
 import ggc.classes.Product;
 
-class Sale extends Transaction {
+public class Sale extends Transaction {
     
     private int _baseValue;
     private int _sellValue;
@@ -12,8 +12,8 @@ class Sale extends Transaction {
     private int _datePaid;
 
     // Constructor
-    public Sale(String partnerKey, String productId, int quantity, int paymentDeadline){
-        super(partnerKey, productId, quantity);
+    public Sale(int id, String partnerKey, String productId, int quantity, int paymentDeadline){
+        super(id, partnerKey, productId, quantity);
         _baseValue = 0;
         _sellValue = 0;
         _paymentDeadline = paymentDeadline;

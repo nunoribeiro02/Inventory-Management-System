@@ -8,7 +8,8 @@ public abstract class Transaction {
     private int _quantity;
 
     //Constructor
-    public Transaction(String partnerKey, String productId, int quantity){
+    public Transaction(int id, String partnerKey, String productId, int quantity){
+        _id = id;
         _partnerKey = partnerKey;
         _productId = productId;
         _quantity = quantity;
