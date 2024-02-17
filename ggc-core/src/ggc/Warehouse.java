@@ -90,6 +90,12 @@ public class Warehouse implements Serializable {
     return _partners.get(partnerKey);
   }
 
+  public void registerProduct(String productId, int maxPrice, int totalStock){
+    Product prod = new Product(productId);
+    _products.put(productId, prod);
+  }
+
+
   public List<Partner> showAllPartners() {
     List<Partner> partnersShow = new ArrayList<Partner>();
     for (String key: _partners.keySet()){
