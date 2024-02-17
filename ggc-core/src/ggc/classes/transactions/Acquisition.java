@@ -9,8 +9,8 @@ public class Acquisition extends Transaction{
     private Date _datePaid;
 
     // Constructor
-    public Acquisition(String partnerKey, String productId, int quantity){
-        super(partnerKey, productId, quantity);
+    public Acquisition(int id, String partnerKey, String productId, int quantity){
+        super(id, partnerKey, productId, quantity);
         _paidValue = 0;
         _datePaid = null;
     }

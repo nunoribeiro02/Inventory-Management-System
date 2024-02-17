@@ -118,7 +118,7 @@ public class WarehouseManager {
     return _warehouse.showAllBatches();
   }
 
-  public void registerSaleTransactionString(String partnerKey, String productId, int deadline, int amount) throws NoSuchPartnerException, NoSuchProductException,
+  public void registerSaleTransaction(String partnerKey, String productId, int deadline, int amount) throws NoSuchPartnerException, NoSuchProductException,
             NoSuchDateException, InvalidAmountException
   {
     _warehouse.registerSaleTransaction(partnerKey, productId, deadline, amount);

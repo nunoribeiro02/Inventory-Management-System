@@ -12,6 +12,7 @@ import ggc.app.exceptions.UnknownProductKeyException;
 import ggc.exceptions.InvalidAmountException;
 import ggc.exceptions.NoSuchPartnerException;
 import ggc.exceptions.NoSuchProductException;
+import ggc.exceptions.NoSuchDateException;
 
 /**
  * 
@@ -30,7 +31,7 @@ public class DoRegisterSaleTransaction extends Command<WarehouseManager> {
   public final void execute() throws CommandException, UnknownPartnerKeyException, UnknownProductKeyException, 
           InvalidDateException, UnavailableProductException {
     try {
-      String partnerKey = integerField("partnerKey")
+      String partnerKey = stringField("partnerKey");
       String productId = stringField("productId");
       int deadline = integerField("deadline");
       int amount = integerField("amount");
@@ -39,10 +40,10 @@ public class DoRegisterSaleTransaction extends Command<WarehouseManager> {
       throw new UnknownPartnerKeyException(e.getPartnerKey());  
     } catch (NoSuchProductException e) {
         throw new UnknownProductKeyException(e.getProductId());  
-    } catch (NoSuchDateException e ){
+    } catch (NoSuchDateException e){
       throw new InvalidDateException(e.getDate());  
-    } catch (InvalidAmountException e ){
+    } catch (InvalidAmountException e){
       throw new UnavailableProductException(e.getProductId(), e.getAmount(), e.getStock());  
     }
-
+  }
 }
