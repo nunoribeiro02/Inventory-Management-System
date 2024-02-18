@@ -1,6 +1,7 @@
 package ggc.classes;
+import java.io.Serializable;
 
-public class Product{
+public class Product implements Serializable{
     
     private double _maxPrice;
     private String _id;

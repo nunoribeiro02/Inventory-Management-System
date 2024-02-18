@@ -1,6 +1,7 @@
 package ggc.classes;
+import java.io.Serializable;
 
-public class Partner {
+public class Partner implements Serializable{
     private String _partnerKey;
     private String _name;
     private String _status;

@@ -1,11 +1,11 @@
 package ggc.classes.transactions;
 
+import java.io.Serializable;
 import java.text.Collator;
-
 import ggc.classes.Partner;
 import ggc.classes.Product;
 
-public class Batch implements Comparable<Batch>{
+public class Batch implements Comparable<Batch>, Serializable{
     
     private Partner _partner;
     private Product _product;

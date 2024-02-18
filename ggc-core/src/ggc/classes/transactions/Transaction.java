@@ -1,6 +1,7 @@
 package ggc.classes.transactions;
+import java.io.Serializable;
 
-public abstract class Transaction {
+public abstract class Transaction implements Serializable{
 
     private int _id;
     private String _partnerKey;
